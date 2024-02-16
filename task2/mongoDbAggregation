@@ -1,0 +1,16 @@
+db.sales.aggregate([
+    {
+        $match: {
+            date: {
+                $gte: ISODate("2023-10-01T00:00:00Z"),
+                $lt: ISODate("2023-11-01T00:00:00Z")
+            }
+        }
+    },
+    {
+        $group: {
+            _id: "$product_id",
+            totalQuantitySold: { $sum: "$quantity_sold" }
+        }
+    }
+])
