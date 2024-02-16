@@ -1,0 +1,13 @@
+db.orders.aggregate([
+    {
+        $group: {
+            _id: "$customer_id",
+            orderCount: { $sum: 1 }
+        }
+    },
+    {
+        $sort: {
+            orderCount: -1
+        }
+    }
+])
