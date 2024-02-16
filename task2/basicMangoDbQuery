@@ -1,0 +1,4 @@
+db.products.find({
+    category: 'Electronics',
+    price: { $lt: 500 }
+})
