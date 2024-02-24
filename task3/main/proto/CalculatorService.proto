@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package com.example.services;
+
+option java_package = "com.example.services";
+option java_multiple_files = true;
+
+service CalculatorService{
+  rpc streamSquares (stream Number) returns (stream Square);
+  rpc calculateAverage(stream AverageRequest) returns ( AverageResponse);
+  rpc getPrimeNumbers( PrimeNumberRequest) returns (stream PrimeNumberResponse);
+  rpc addition(CalculationRequest) returns (CalculationResponse);
+  rpc subtraction(CalculationRequest) returns (CalculationResponse);
+  rpc multiplication(CalculationRequest) returns (CalculationResponse);
+  rpc division(CalculationRequest) returns (CalculationResponse);
+}
+
+message Number {
+  int32 value = 1;
+}
+
+message Square {
+  int32 value = 1;
+}
+
+message AverageRequest{
+  int32 number = 1;
+}
+
+message AverageResponse{
+  double number = 1;
+}
+
+message PrimeNumberRequest{
+  int32 number = 1;
+}
+
+message PrimeNumberResponse{
+  int32 number = 1;
+}
+
+message CalculationRequest{
+  double val1 = 1;
+  double val2 = 2;
+}
+
+message CalculationResponse{
+  double result=1;
+}
